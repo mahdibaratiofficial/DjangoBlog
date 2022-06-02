@@ -4,9 +4,17 @@ def writeHello():
     return "Hello World!"
 # Create your views here.
 
-def welcome(request):
-    return render(request,template_name="welcome.htm")
+def Home_Page(request):
+    return render(request, template_name = "home.html")
 
+def Blog_Page(request):
+    return render(request, template_name = "blog.html")
 
-def home(request):
-    return render(request,'home.htm', {'writeHello': 'writeHello'})
+def Contact_Page(request):
+    return render(request, template_name = "contact.html")
+
+def About_Page(request):
+    return render(request, template_name = "about.html")
+
+def Posts_Page(request):
+    return render(request, template_name = "posts.html")
