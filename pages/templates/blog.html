@@ -45,12 +45,12 @@
                     <li><a href="#">{{ post.author }}</a></li>
                     <li><a href="#">{{ post.created_at }}</a></li>
                   </ul>
-                  <p maxlength="10">{{ post.description }}</p>
+                  <p>{{ post.description|truncatechars:20 }}</p>
                   <div class="post-options">
                     <div class="row">
                       <div class="col-lg-12">
                         <div class="main-button">
-                          <a href="">View Post</a>
+                          <a href="{% url 'post' pk=post.pk %}">View Post</a>
                         </div>
                       </div>
                     </div>

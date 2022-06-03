@@ -58,7 +58,7 @@
                     <li><a href="#">{{ post.author }}</a></li>
                     <li><a href="#">{{ post.created_at }}</a></li>
                   </ul>
-                  <p>{{ post.description }}</p>
+                  <p>{{ post.description|truncatechars:30 }}</p>
                   <div class="post-options">
                     <div class="row">
                       <div class="col-6">
