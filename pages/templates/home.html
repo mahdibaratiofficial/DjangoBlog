@@ -2,24 +2,25 @@
 
 {% load static %}
 
-{% block title_name %}Home{% endblock title_name %}
+{% block title_name %}خانه{% endblock title_name %}
 
 {% block Site_Content %}
 
 <!-- Page Content -->
 <!-- Banner Starts Here -->
-<div class="main-banner header-text">
+<br>
+<div class="main-banner header-text shabnam">
   <div class="container-fluid">
     <div class="owl-banner owl-carousel">
       {% for post in posts %}
-      <div class="item">
-        <img src="{{ post.photo.url }}" alt="{{ post.title }}" style="height: 400px;">
+      {% if forloop.counter < 10 %} <div class="item" >
+        <img src="{{ post.photo.url }}" alt="{{ post.title }}" style="height: 400px;" class="radius">
         <div class="item-content">
           <div class="main-content">
             <div class="meta-category">
             </div>
             <!-- single post url -->
-            <a href="">
+            <a href="{% url 'post' pk=post.pk %}">
               <h4>{{ post.title }}</h4>
             </a>
             <ul class="post-info">
@@ -28,14 +29,15 @@
             </ul>
           </div>
         </div>
-      </div>
-      {% endfor %}
     </div>
+    {% endif %}
+    {% endfor %}
   </div>
+</div>
 </div>
 <!-- Banner Ends Here -->
 
-<section class="blog-posts">
+<section class="blog-posts shabnam text-right">
   <div class="container">
     <div class="row">
       <div class="col-lg-8">
@@ -43,21 +45,21 @@
           <div class="row">
             <!-- ------------------------------------------------------ -->
             {% for post in posts %}
-            <div class="col-lg-12">
+            {% if forloop.counter < 4 %} <div class="col-lg-12">
               <div class="blog-post">
-                <div class="blog-thumb">
-                  <img src="{{ post.photo.url }}" alt="{{ post.title }}">
+                <div class="blog-thumb ">
+                  <img src="{{ post.photo.url }}" alt="{{ post.title }}" class="radius-up">
                 </div>
-                <div class="down-content">
+                <div class="down-content radius-down shadow-sm">
                   <!-- Redirect To Single Post - Under Code: -->
-                  <a href="">
+                  <a href="{% url 'post' pk=post.pk %}">
                     <h4>{{ post.title }}</h4>
                   </a>
                   <ul class="post-info">
                     <li><a href="#">{{ post.author }}</a></li>
                     <li><a href="#">{{ post.created_at }}</a></li>
                   </ul>
-                  <p>{{ post.description }}</p>
+                  <p>{{ post.description|truncatechars:30 }}</p>
                   <div class="post-options">
                     <div class="row">
                       <div class="col-6">
@@ -66,94 +68,58 @@
                       <div class="col-6">
                         <ul class="post-share">
                           <li><i class="fa fa-share-alt"></i></li>
-                          <li><a href="#">Facebook</a>,</li>
-                          <li><a href="#"> Twitter</a></li>
+                          <li><a href="#">فیسبوک</a>,</li>
+                          <li><a href="#"> توییتر</a></li>
                         </ul>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-
-            {% endfor %}
-            <!-- _______________________________________________________ -->
-            <div class="col-lg-12">
-              <div class="main-button">
-                <a href="/blog">View All Posts</a>
-              </div>
+          </div>
+          {% endif %}
+          {% endfor %}
+          <!-- _______________________________________________________ -->
+          <div class="col-lg-12">
+            <div class="main-button">
+              <a href="/blog">مشاهده همه پست ها</a>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-lg-4">
-        <div class="sidebar">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="sidebar-item search">
-                <form id="search_form" name="gs" method="GET" action="#">
-                  <input type="text" name="q" class="searchText" placeholder="type to search..." autocomplete="on">
-                </form>
+    </div>
+    <div class="col-lg-4">
+      <div class="sidebar">
+        <div class="row">
+          <div class="col-lg-12">
+
+          </div>
+          <div class="col-lg-12 shabnam text-right">
+            <div class="sidebar-item recent-posts">
+              <div class="">
+                <h3>پست های پیشنهادی</h3>
+                <!-- <br> -->
+                <hr>
               </div>
-            </div>
-            <div class="col-lg-12">
-              <div class="sidebar-item recent-posts">
-                <div class="sidebar-heading">
-                  <h2>Recent Posts</h2>
-                </div>
-                <div class="content">
-                  <ul>
-                    <!-- _____________________________________________________________________ -->
-                    {% for post in posts %}
-                    <li><a href="">
-                        <h5>{{ post.title }}</h5>
-                        <span>{{ post.created_at }}</span>
-                      </a></li>
+              <div class="content">
+                <ul>
+                  <!-- _____________________________________________________________________ -->
+                  {% for post in posts %}
+                  {% if forloop.counter < 5 %} <li><a href="{% url 'post' pk=post.pk %}">
+                      <h5>{{ post.title }}</h5>
+                      <span>{{ post.created_at }}</span>
+                    </a></li>
+                    {% endif %}
                     {% endfor %}
                     <!-- _______________________________________________________________ -->
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-12">
-              <div class="sidebar-item categories">
-                <div class="sidebar-heading">
-                  <h2>Categories</h2>
-                </div>
-                <div class="content">
-                  <ul>
-                    <li><a href="#">- Nature Lifestyle</a></li>
-                    <li><a href="#">- Awesome Layouts</a></li>
-                    <li><a href="#">- Creative Ideas</a></li>
-                    <li><a href="#">- Responsive Templates</a></li>
-                    <li><a href="#">- HTML5 / CSS3 Templates</a></li>
-                    <li><a href="#">- Creative &amp; Unique</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-12">
-              <div class="sidebar-item tags">
-                <div class="sidebar-heading">
-                  <h2>Tag Clouds</h2>
-                </div>
-                <div class="content">
-                  <ul>
-                    <li><a href="#">Lifestyle</a></li>
-                    <li><a href="#">Creative</a></li>
-                    <li><a href="#">HTML5</a></li>
-                    <li><a href="#">Inspiration</a></li>
-                    <li><a href="#">Motivation</a></li>
-                    <li><a href="#">PSD</a></li>
-                    <li><a href="#">Responsive</a></li>
-                  </ul>
-                </div>
+                </ul>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
   </div>
 </section>
 

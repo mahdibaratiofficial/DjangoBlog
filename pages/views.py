@@ -19,5 +19,7 @@ def Contact_Page(request):
 def About_Page(request):
     return render(request, template_name = "about.html")
 
-def Posts_Page(request):
-    return render(request, template_name = "posts.html")
+def Posts_Page(request,pk):
+    post=Post.objects.get(pk=pk)
+    posts=Post.objects.all()
+    return render(request, template_name = "posts.html",context={'post':post,'posts':posts})

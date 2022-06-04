@@ -2,7 +2,7 @@
 
 {% load static %}
 
-{% block title_name %}Blog Entries{% endblock title_name %}
+{% block title_name %}بلاگ{% endblock title_name %}
 
 {% block Site_Content %}
 
@@ -13,9 +13,9 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <div class="text-content">
-            <h4>Recent Posts</h4>
-            <h2>Our Recent Blog Entries</h2>
+          <div class="text-content shabnam">
+            <h4></h4>
+            <h2>پست ها</h2>
           </div>
         </div>
       </div>
@@ -26,32 +26,31 @@
 <!-- Banner Ends Here -->
 
 <section class="blog-posts grid-system">
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
-      <div class="col-lg-8">
-        <div class="all-blog-posts">
-          <div class="row">
+      <div class="col-lg-12">
+        <div class="all-blog-posts shabnam text-right">
+          <div class="row d-flex justify-content-end">
             {% for post in posts %}
-            <div class="col-lg-6">
+            <div class="col-lg-3 col-md-6">
               <div class="blog-post">
                 <div class="blog-thumb">
-                  <img src="{{ post.photo.url }}" alt="{{ post.title }}" style="height:250px ;">
+                  <img src="{{ post.photo.url }}" alt="{{ post.title }}" style="height:250px ;" class="radius-up">
                 </div>
-                <div class="down-content">
-                  <span>Lifestyle</span>
-                  <a href="post-details.html">
+                <div class="down-content radius-down shadow-sm">
+                  <a href="{% url 'post' pk=post.pk %}">
                     <h4>{{ post.title }}</h4>
                   </a>
                   <ul class="post-info">
                     <li><a href="#">{{ post.author }}</a></li>
                     <li><a href="#">{{ post.created_at }}</a></li>
                   </ul>
-                  <p maxlength="10">{{ post.description }}</p>
+                  <p>{{ post.description|truncatechars:20 }}</p>
                   <div class="post-options">
                     <div class="row">
                       <div class="col-lg-12">
-                        <div class="main-button">
-                          <a href="/blog">View Post</a>
+                        <div class="main-button" >
+                          <a href="{% url 'post' pk=post.pk %}">مشاهده پست</a>
                         </div>
                       </div>
                     </div>
@@ -60,80 +59,6 @@
               </div>
             </div>
             {% endfor %}
-
-            <div class="col-lg-12">
-              <ul class="page-numbers">
-                <li><a href="#">1</a></li>
-                <li class="active"><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4">
-        <div class="sidebar">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="sidebar-item search">
-                <form id="search_form" name="gs" method="GET" action="#">
-                  <input type="text" name="q" class="searchText" placeholder="type to search..." autocomplete="on">
-                </form>
-              </div>
-            </div>
-            <div class="col-lg-12">
-              <div class="sidebar-item recent-posts">
-                <div class="sidebar-heading">
-                  <h2>Recent Posts</h2>
-                </div>
-                <div class="content">
-                  <ul>
-                    {% for post in posts %}
-                    <li><a href="">
-                        <h5>{{ post.title }}</h5>
-                        <span>{{ post.created_at }}</span>
-                      </a></li>
-                    {% endfor %}
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-12">
-              <div class="sidebar-item categories">
-                <div class="sidebar-heading">
-                  <h2>Categories</h2>
-                </div>
-                <div class="content">
-                  <ul>
-                    <li><a href="#">- Nature Lifestyle</a></li>
-                    <li><a href="#">- Awesome Layouts</a></li>
-                    <li><a href="#">- Creative Ideas</a></li>
-                    <li><a href="#">- Responsive Templates</a></li>
-                    <li><a href="#">- HTML5 / CSS3 Templates</a></li>
-                    <li><a href="#">- Creative &amp; Unique</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-12">
-              <div class="sidebar-item tags">
-                <div class="sidebar-heading">
-                  <h2>Tag Clouds</h2>
-                </div>
-                <div class="content">
-                  <ul>
-                    <li><a href="#">Lifestyle</a></li>
-                    <li><a href="#">Creative</a></li>
-                    <li><a href="#">HTML5</a></li>
-                    <li><a href="#">Inspiration</a></li>
-                    <li><a href="#">Motivation</a></li>
-                    <li><a href="#">PSD</a></li>
-                    <li><a href="#">Responsive</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
