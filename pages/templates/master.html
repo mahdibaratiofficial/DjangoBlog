@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/templatemo-stand-blog.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/owl.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/customefont.css' %}">
 <!--
 
 TemplateMo 551 Stand Blog
@@ -45,31 +46,25 @@ https://templatemo.com/tm-551-stand-blog
     <!-- ***** Preloader End ***** -->
 
     <!-- Header -->
-    <header class="">
+    <header class="shabnam text-right">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="/home"><h2>Stand Blog</h2></a>
+          <a class="navbar-brand" href="/home"><h2>دارکوب بلاگ</h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item {% if request.resolver_match.url_name == 'home' %}active{% endif %}">
-                <a class="nav-link" href="/home">Home
+                <a class="nav-link" href="/home">خانه
                   <span class="sr-only">(current)</span>
                 </a>
               </li> 
               <li class="nav-item {% if request.resolver_match.url_name == 'about' %}active{% endif %}">
-                <a class="nav-link" href="/about">About Us</a>
+                <a class="nav-link" href="/about">درباره ما</a>
               </li>
               <li class="nav-item {% if request.resolver_match.url_name == 'blog' %}active{% endif %}">
-                <a class="nav-link" href="/blog">Blog Entries</a>
-              </li>
-              <li class="nav-item {% if request.resolver_match.url_name == 'posts' %}active{% endif %}">
-                <a class="nav-link" href="/posts">Post Details</a>
-              </li>
-              <li class="nav-item {% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
-                <a class="nav-link" href="/contact">Contact Us</a>
+                <a class="nav-link" href="/blog">وبلاگ</a>
               </li>
             </ul>
           </div>
@@ -82,23 +77,16 @@ https://templatemo.com/tm-551-stand-blog
     {% endblock Site_Content %}
 
     <footer>
-      <div class="container">
+      <div class="container shabnam">
         <div class="row">
           <div class="col-lg-12">
             <ul class="social-icons">
-              <li><a href="#">Facebook</a></li>
-              <li><a href="#">Twitter</a></li>
-              <li><a href="#">Behance</a></li>
-              <li><a href="#">Linkedin</a></li>
-              <li><a href="#">Dribbble</a></li>
+              <li><a href="#">خانه</a></li>
+              <li><a href="#">وبلاگ</a></li>
+              <li><a href="#">درباره ما</a></li>
             </ul>
           </div>
           <div class="col-lg-12">
-            <div class="copyright-text">
-              <p>Copyright 2020 Stand Blog Co.
-                    
-                 | Design: <a rel="nofollow" href="https://templatemo.com" target="_parent">TemplateMo</a></p>
-            </div>
           </div>
         </div>
       </div>
