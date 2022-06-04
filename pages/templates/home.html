@@ -2,7 +2,7 @@
 
 {% load static %}
 
-{% block title_name %}Home{% endblock title_name %}
+{% block title_name %}خانه{% endblock title_name %}
 
 {% block Site_Content %}
 
@@ -50,7 +50,7 @@
                 <div class="blog-thumb ">
                   <img src="{{ post.photo.url }}" alt="{{ post.title }}" class="radius-up">
                 </div>
-                <div class="down-content radius-down">
+                <div class="down-content radius-down shadow-sm">
                   <!-- Redirect To Single Post - Under Code: -->
                   <a href="{% url 'post' pk=post.pk %}">
                     <h4>{{ post.title }}</h4>
